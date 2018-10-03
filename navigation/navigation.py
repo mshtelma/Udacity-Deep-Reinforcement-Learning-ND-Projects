@@ -91,13 +91,11 @@ class RLAlgorithm():
 
         for i_episode in range(start_episode, n_episodes + 1):
             env_info = self.env.reset(train_mode=True)[self.brain_name]
-            state = deque(maxlen=4)
-            state.append(self.decode_state(env_info))
-            state.append(self.decode_state(env_info))
-            state.append(self.decode_state(env_info))
-            state.append(self.decode_state(env_info))
+            self.init_state(env_info)
+            state = self.get_current_state(env_info)
             score = 0
             for t in range(max_t):
+
                 action = agent.act(state, eps)
 
                 # next_state, reward, done, _ = env.step(action)
@@ -106,8 +104,7 @@ class RLAlgorithm():
                 reward = env_info.rewards[0]  # get the reward
                 done = env_info.local_done[0]
 
-                next_state = state.copy()  # get the next state
-                next_state.append(self.decode_state(env_info))  # get the next state
+                next_state = self.get_current_state(env_info)
 
                 # if not done:
                 #    next_state = next_state - state
@@ -134,11 +131,11 @@ class RLAlgorithm():
 
             print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, mean), end="")
             #print('\rEpisode {}\tAverage Score: {:.4f}'.format(i_episode, mean))
-            if i_episode % 10 == 0:
-                print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, mean))
-                sys.stdout.flush()
             if i_episode % 100 == 0:
-                torch.save(agent.qnetwork_local.state_dict(), 'checkpoint_'+str(i_episode)+'.pth')
+                print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, mean))
+                #sys.stdout.flush()
+            #if i_episode % 100 == 0:
+            #    torch.save(agent.qnetwork_local.state_dict(), 'checkpoint_'+str(i_episode)+'.pth')
             if mean >= 13.0:
                 print('\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'.format(i_episode - 100,
                                                                                              mean))
@@ -148,6 +145,15 @@ class RLAlgorithm():
 
     def decode_state(self, env_info):
         return env_info.vector_observations[0]
+
+    def get_current_state(self, env_info):
+        new_state = self.decode_state(env_info)
+        self.states.append(new_state)
+        return new_state
+
+    def init_state(self, env_info):
+        self.states = deque(maxlen=1)
+        self.states.append(self.decode_state(env_info))
 
 
 class VisualRLAlgorithm(RLAlgorithm):
@@ -213,3 +219,17 @@ class VisualRLAlgorithm(RLAlgorithm):
         screen = torch.from_numpy(screen)
         # Resize, and add a batch dimension (BCHW)
         return self.resize(screen).unsqueeze(0).to(self.device)
+
+    def get_current_state(self, env_info):
+        new_state = self.decode_state(env_info)
+        self.states.append(new_state)
+        return torch.cat(self.states, dim=1)
+
+
+    def init_state(self, env_info):
+        self.states = deque(maxlen=4)
+        self.states.append(self.decode_state(env_info))
+        self.states.append(self.decode_state(env_info))
+        self.states.append(self.decode_state(env_info))
+        self.states.append(self.decode_state(env_info))
+

@@ -2,7 +2,7 @@ import pickle
 import itertools
 from unityagents import UnityEnvironment
 
-from navigation import Result, LearningTask, DQN
+from navigation import Result, LearningTask, RLAlgorithm
 
 
 
@@ -26,12 +26,12 @@ from navigation import Result, LearningTask, DQN
 #task = LearningTask(eps_start=1.0, eps_end=0.03, eps_decay=0.9, lr=0.001, buffer_size=100000, batch_size=64, gamma=0.99,
 #             tau=0.03, update_rate=4, agent_type='DDQN', layers=[24, 12, 8], network_type='Dueling')
 
-task =  LearningTask(eps_start=1.0, eps_end=0.001, eps_decay=0.99, lr=0.001, buffer_size=100000, batch_size=64, gamma=0.99,
-  tau=0.0015, update_rate=4, agent_type='DQN', layers=[32, 24], network_type='Dueling')
+task =  LearningTask(eps_start=0.25, eps_end=0.001, eps_decay=0.99, lr=0.001, buffer_size=100000, batch_size=64, gamma=0.99,
+  tau=0.01, update_rate=1, agent_type='DQN', layers=[32, 24], network_type='Simple')
 
 
-env = UnityEnvironment(file_name="/Users/ms250139/Sources/courses/DRLND/UnityAgents/Banana.app", no_graphics=False)
-dqn = DQN(env, max_episodes=900)
+env = UnityEnvironment(file_name="Environments/Banana.app", no_graphics=False)
+dqn = RLAlgorithm(env, max_episodes=900)
 print(task)
 r = dqn.run_dqn(task)
 print(r)

@@ -50,25 +50,25 @@ class QNetwork(AbstractQNetwork):
 class DuelingQNetwork(QNetwork):
     def __init__(self, state_size, action_size, seed, layer_specs):
         super(DuelingQNetwork, self).__init__(state_size, action_size, seed, layer_specs)
-        self.adv = nn.Sequential(self.layers)
-        self.val = nn.Sequential(self.layers)
-        # self.adv1 = nn.Linear(action_size, action_size * 2)
-        # self.adv2 = nn.Linear(action_size * 2, action_size)
-        #
-        # self.val1 = nn.Linear(action_size, action_size * 2)
-        # self.val2 = nn.Linear(action_size * 2, 1)
+        #self.adv = nn.Sequential(self.layers)
+        #self.val = nn.Sequential(self.layers)
+        self.adv1 = nn.Linear(action_size, action_size * 2)
+        self.adv2 = nn.Linear(action_size * 2, action_size)
+
+        self.val1 = nn.Linear(action_size, action_size * 2)
+        self.val2 = nn.Linear(action_size * 2, 1)
 
     def forward(self, state):
-        val = self.val.forward(state)
-        adv = self.adv.forward(state)
+        #val = self.val.forward(state)
+        #adv = self.adv.forward(state)
 
-        # f = super(DuelingQNetwork, self).forward(state)
-        # f = F.relu(f)
-        # adv = F.relu(self.adv1(f))
-        # adv = self.adv2(adv)
-        #
-        # val = F.relu(self.val1(f))
-        # val = self.val2(val)
+        f = super(DuelingQNetwork, self).forward(state)
+        f = F.relu(f)
+        adv = F.relu(self.adv1(f))
+        adv = self.adv2(adv)
+
+        val = F.relu(self.val1(f))
+        val = self.val2(val)
 
         return val + adv - adv.mean()
 
@@ -142,8 +142,8 @@ class ConvQNetwork(nn.Module):
              elif isinstance(m, nn.Conv3d):
                  nn.init.xavier_uniform_(m.weight)
 
-    def forward(self, x1, x2, x3, x4):
-        x = torch.cat([x1, x2, x3, x4], dim=1)
+    def forward(self, x):
+        #x = torch.cat([x1, x2, x3, x4], dim=1)
 
         a = F.relu(F.max_pool2d(self.bn_a1(self.conv_a1(x)), (4,4)))
         a = F.relu(F.max_pool2d(self.bn_a2(self.conv_a2(a)), (2,2)))

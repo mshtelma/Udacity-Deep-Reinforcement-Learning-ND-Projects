@@ -92,10 +92,10 @@ class Agent():
             state (array_like): current state
             eps (float): epsilon, for epsilon-greedy action selection
         """
-        # state = torch.from_numpy(state).float().unsqueeze(0).to(device)
+        state = torch.from_numpy(state).float().unsqueeze(0).to(device)
         self.qnetwork_local.eval()
         with torch.no_grad():
-            action_values = self.qnetwork_local(state[0], state[1], state[2], state[3])
+            action_values = self.qnetwork_local(state)
         self.qnetwork_local.train()
 
         # Epsilon-greedy action selection
@@ -105,8 +105,7 @@ class Agent():
             return random.choice(np.arange(self.action_size))
 
     @abstractmethod
-    def loss(self, actions, states1, states2, states3, states4, next_states1, next_states2, next_states3, next_states4,
-             rewards, dones):
+    def loss(self, actions, state, next_state, rewards, dones):
         pass
 
     def learn(self, experiences, gamma):
@@ -117,10 +116,9 @@ class Agent():
             experiences (Tuple[torch.Tensor]): tuple of (s, a, r, s', done) tuples 
             gamma (float): discount factor
         """
-        states1, states2, states3, states4, actions, rewards, next_states1, next_states2, next_states3, next_states4, dones = experiences
+        states, actions, rewards, next_states, dones = experiences
 
-        loss = self.loss(actions, states1, states2, states3, states4, next_states1, next_states2, next_states3,
-                         next_states4, rewards, dones)
+        loss = self.loss(actions, states, next_states, rewards, dones)
 
         # Minimize the loss
         self.optimizer.zero_grad()
@@ -172,27 +170,15 @@ class ReplayBuffer:
         """Randomly sample a batch of experiences from memory."""
         experiences = random.sample(self.memory, k=self.batch_size)
 
-        states1 = torch.from_numpy(np.vstack([e.state[0] for e in experiences if e is not None])).float().to(device)
-        states2 = torch.from_numpy(np.vstack([e.state[1] for e in experiences if e is not None])).float().to(device)
-        states3 = torch.from_numpy(np.vstack([e.state[2] for e in experiences if e is not None])).float().to(device)
-        states4 = torch.from_numpy(np.vstack([e.state[3] for e in experiences if e is not None])).float().to(device)
+        states = torch.from_numpy(np.vstack([e.state for e in experiences if e is not None])).float().to(device)
         actions = torch.from_numpy(np.vstack([e.action for e in experiences if e is not None])).long().to(device)
         rewards = torch.from_numpy(np.vstack([e.reward for e in experiences if e is not None])).float().to(device)
-        next_states1 = torch.from_numpy(np.vstack([e.next_state[0] for e in experiences if e is not None])).float().to(
-            device)
-        next_states2 = torch.from_numpy(np.vstack([e.next_state[1] for e in experiences if e is not None])).float().to(
-            device)
-        next_states3 = torch.from_numpy(np.vstack([e.next_state[2] for e in experiences if e is not None])).float().to(
-            device)
-        next_states4 = torch.from_numpy(np.vstack([e.next_state[3] for e in experiences if e is not None])).float().to(
+        next_states = torch.from_numpy(np.vstack([e.next_state for e in experiences if e is not None])).float().to(
             device)
         dones = torch.from_numpy(np.vstack([e.done for e in experiences if e is not None]).astype(np.uint8)).float().to(
             device)
 
-        return (
-            states1, states2, states3, states4, actions, rewards, next_states1, next_states2, next_states3,
-            next_states4,
-            dones)
+        return (states, actions, rewards, next_states, dones)
 
     def __len__(self):
         """Return the current size of internal memory."""
@@ -200,34 +186,32 @@ class ReplayBuffer:
 
 
 class DQNAgent(Agent):
-    def loss(self, actions, states1, states2, states3, states4, next_states1, next_states2, next_states3, next_states4,
-             rewards, dones):
+    def loss(self, actions, states, next_states, rewards, dones):
         # Get max predicted Q values (for next states) from target model
-        Q_targets_next = self.qnetwork_target(next_states1, next_states2, next_states3, next_states4).detach().max(1)[
+        Q_targets_next = self.qnetwork_target(next_states).detach().max(1)[
             0].unsqueeze(1)
         # Compute Q targets for current states
         Q_targets = rewards + (self.gamma * Q_targets_next * (1 - dones))
 
         # Get expected Q values from local model
-        Q_expected = self.qnetwork_local(states1, states2, states3, states4).gather(1, actions)
+        Q_expected = self.qnetwork_local(states).gather(1, actions)
         # Compute loss
         loss = F.mse_loss(Q_expected, Q_targets)
         return loss
 
 
 class DDQNAgent(Agent):
-    def loss(self, actions, states1, states2, states3, states4, next_states1, next_states2, next_states3, next_states4,
-             rewards, dones):
+    def loss(self, actions, states, next_states, rewards, dones):
         # Get best actions from local network
-        Q_max = self.qnetwork_local(next_states1, next_states2, next_states3, next_states4).detach().max(1)[
+        Q_max = self.qnetwork_local(next_states).detach().max(1)[
             1].unsqueeze(1)
         # Get estimated Q values for selected actions from target network
-        Q_next = self.qnetwork_target(next_states1, next_states2, next_states3, next_states4).gather(1, Q_max)
+        Q_next = self.qnetwork_target(next_states).gather(1, Q_max)
         # Compute Q targets for current states
         Q_targets = rewards + (self.gamma * Q_next * (1 - dones))
 
         # Get expected Q values from local model
-        Q_expected = self.qnetwork_local(states1, states2, states3, states4).gather(1, actions)
+        Q_expected = self.qnetwork_local(states).gather(1, actions)
         # Compute the loss.
         loss = F.mse_loss(Q_expected, Q_targets)
         return loss

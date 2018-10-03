@@ -18,8 +18,8 @@ def learn(task, rtask):
     #if file.is_file():
     #    rtask = pickle.load(open('last_task_pixels.pckl', 'rb'))
     print('Starting new process with global episode number ', rtask.last_episode)
-    env = UnityEnvironment(file_name="VisualBanana_Linux/Banana.x86_64", no_graphics=False)
-    #env = UnityEnvironment(file_name="/Users/ms250139/Sources/courses/DRLND/UnityAgents/VisualBanana.app", no_graphics=False)
+    #env = UnityEnvironment(file_name="VisualBanana_Linux/Banana.x86_64", no_graphics=False)
+    env = UnityEnvironment(file_name="Environments/VisualBanana.app", no_graphics=False)
     algo = VisualRLAlgorithm(env, rtask, max_episodes=2500)
     new_task = algo.run_dqn(task)
     env.close()
