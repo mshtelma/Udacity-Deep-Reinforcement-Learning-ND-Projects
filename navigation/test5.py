@@ -11,14 +11,14 @@ TAU = 0.0075  # for soft update of target parameters
 LR = 0.001  # learning rate
 UPDATE_EVERY = 4  # how often to update the network
 
-eps_starts = [ 0.25, 0.2, 1.0, 0.5]
+eps_starts = [ 0.25, 0.2, 0.5]
 eps_decays = [0.99, 0.9, 0.8, 0.85]
 eps_ends = [0.001, 0.02, 0.03]
 lrs = [0.001, 0.002, 0.0005, 0.0008 ]
 buffers = [BUFFER_SIZE]
 batches = [64, 128, 256]
 gammas = [GAMMA]
-taus = [0.002, 0.007, 0.008, 0.01, 0.015, 0.02]
+taus = [0.002, 0.007, 0.008, 0.01]
 update_rates = [1, 2, 4]
 agent_types = ['DQN' ]  # 'DDQN'
 layers = [ [32, 24]] #[16, 12, 6], [24, 12, 8], [32, 8], [24, 6]

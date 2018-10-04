@@ -14,12 +14,12 @@ UPDATE_EVERY = 4  # how often to update the network
 eps_starts = [ 0.25]
 eps_decays = [0.99]
 eps_ends = [0.001]
-lrs = [0.002 ]
+lrs = [0.0005 ]
 buffers = [BUFFER_SIZE]
 batches = [64]
 gammas = [GAMMA]
-taus = [0.007]
-update_rates = [2]
+taus = [0.004]
+update_rates = [4]
 agent_types = ['DQN','DDQN' ]  #
 layers = [ [32, 24]] #[16, 12, 6], [24, 12, 8], [32, 8], [24, 6]
 network_types = ['Simple','Dueling' ]  #
@@ -31,14 +31,15 @@ tasks = list(itertools.product(
     *[eps_starts, eps_ends, eps_decays, lrs, buffers, batches, gammas, taus, update_rates, agent_types, layers,
       network_types]))
 res = []
-dqn = RLAlgorithm(env, max_episodes=700)
+
 for task_spec in tasks:
+    dqn = RLAlgorithm(env, max_episodes=1200)
     task = LearningTask._make(task_spec)
     print(task)
     r = dqn.run_dqn(task)
     print('episode = ', r.episode, 'mean score = ', r.mean_score)
     res.append(r)
-    f = open('res_compare.pckl', 'wb')
-    pickle.dump(res, f)
-    f.flush()
-    f.close()
+f = open('res_compare.pckl', 'wb')
+pickle.dump(res, f)
+f.flush()
+f.close()
