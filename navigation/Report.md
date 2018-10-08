@@ -19,10 +19,35 @@ The task is episodic, and in order to solve the environment, your agent must get
 
 The second approach has used visual observations, which were represented as images (84x84).
 
+## Architecture
+
+The main class that can be used for running algorithm is called RLAlgorithm and is stored in navigation.py. 
+This class implements simple Q-Learning algorithm applied to sensor data and is compatible with sensor Unity ML environments. 
+There is also a class VisualRLAlgorithm, which extends RLAlgorithm with posibility of using visual Unity ML environments. 
+It uses four latest frames as a state. 
+DQN Agnet code is stored in dqn_agent.py and is represented by DQNAgent class. Most of the abstract logic of DQN agent is developed in abstract Agent class. 
+This class serves as a basis for implementation of Double DQN algorithm. 
 
 ## DQN Agent
 
-The agent was implemented in both cases as deep neural network. 
+The agent was implemented in both cases (sensor and visual) as deep neural network. 
 For vector observations I have used networks with different number of layers.
 One of the best was the network with the two hidden layers, 32 and 24 neurons. 
-It was possible to use smaller network with 24 and 6 neurons respectively, but the traning time was longer for such network. 
+It was possible to use smaller network with 24 and 6 neurons respectively, but the training time was longer for such network. 
+The basic DNN is implemented in class QNetwork. There is also abstract implementation, that reused amoing different versions of QNetworks.
+Dueling Network algorithm is implemented in DuelingQNetwork. Both classes allow defining number of hidden layers and number of neurons in them. 
+For visual agent, convolutional version of QNetwork was implemented. This network has used dueling architecture. 
+
+## Hypeparameter optimisation
+
+During the project a couple of hyperparameter searches runs were tried. One of the best hyperparameters constallation was the follwoing one:
+`eps_start=0.2, eps_end=0.0001, eps_decay=0.99, lr=0.0008, buffer_size=100000, batch_size=64, gamma=0.99,
+  tau=0.0075, update_rate=4, agent_type='DQN', layers=[32, 24], network_type='Simple'`
+Below is the chart of mean score over 100 last episodes for run with these parameters:
+[image1]: best_vector_banana.png
+
+There is also a comparison between combinations of Q-Learning  extensions: 
+[image2]: algo_comparison_scores.png
+
+
+[image1]: best_vector_banana.png
