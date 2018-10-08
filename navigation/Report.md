@@ -1,11 +1,11 @@
 # Project 1: Navigation - Unity Banana Environment
 
-##Overview
+## Overview
 
 The goal of this project was to solve Unity ML Banana Environment. 
 During the project this environment was solved in two different ways: once the agent has used  vector observations, the second agent has used visual observations.
 
-##Environment description
+## Environment description
 A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana.  
 Thus, the goal of the agent is to collect as many yellow bananas as possible while avoiding purple bananas.  
 
