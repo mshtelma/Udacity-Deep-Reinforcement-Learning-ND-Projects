@@ -44,11 +44,13 @@ During the project a couple of hyperparameter searches runs were tried. One of t
 `eps_start=0.2, eps_end=0.0001, eps_decay=0.99, lr=0.0008, buffer_size=100000, batch_size=64, gamma=0.99,
   tau=0.0075, update_rate=4, agent_type='DQN', layers=[32, 24], network_type='Simple'`
 Below is the chart of mean score over 100 last episodes for run with these parameters:
-![image1]:https://github.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/blob/master/navigation/best_vector_banana.png?raw=true
+
+
+[image1]: https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/navigation/best_vector_banana.png
 
 There is also a comparison between combinations of Q-Learning  extensions: 
 
 
-![image2]:https://github.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/blob/master/navigation/algo_comparison_scores.png?raw=true
+[image2]: https://github.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/blob/master/navigation/algo_comparison_scores.png?raw=true
 
 
