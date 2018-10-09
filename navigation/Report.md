@@ -34,23 +34,39 @@ The agent was implemented in both cases (sensor and visual) as deep neural netwo
 For vector observations I have used networks with different number of layers.
 One of the best was the network with the two hidden layers, 32 and 24 neurons. 
 It was possible to use smaller network with 24 and 6 neurons respectively, but the training time was longer for such network. 
-The basic DNN is implemented in class QNetwork. There is also abstract implementation, that reused amoing different versions of QNetworks.
+The basic DNN is implemented in class QNetwork. There is also abstract implementation, that reused among different versions of QNetworks.
 Dueling Network algorithm is implemented in DuelingQNetwork. Both classes allow defining number of hidden layers and number of neurons in them. 
 For visual agent, convolutional version of QNetwork was implemented. This network has used dueling architecture. 
 
 ## Hypeparameter optimisation
 
-During the project a couple of hyperparameter searches runs were tried. One of the best hyperparameters constallation was the follwoing one:
+During the project a couple of hyperparameter searches were tried. 
+One of the best hyperparameters constellations was the following one:
 `eps_start=0.2, eps_end=0.0001, eps_decay=0.99, lr=0.0008, buffer_size=100000, batch_size=64, gamma=0.99,
   tau=0.0075, update_rate=4, agent_type='DQN', layers=[32, 24], network_type='Simple'`
-Below is the chart of mean score over 100 last episodes for run with these parameters:
+
+## Results
+
+Below is the chart of mean score over 100 last episodes for run of Unity Banana Environment with vector state (using hyperparameters mentioned above):
 
 
 ![image1](https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/navigation/best_vector_banana.png)
 
-There is also a comparison between combinations of Q-Learning  extensions: 
-
+The comparison between different flavors of DQN algorithm was also conducted:
 
 ![image2](https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/navigation/algo_comparison_scores.png)
 
+It has shown, that for so small and easy vector state environment, it does not bring any real benefit to use Double DQN or Dueling networks, but these both technics played crucial role while training visual Banana environment. 
 
+
+
+Below is the chart of mean score over 100 last episodes for run of Unity Banana Environment with visual state :
+
+
+![image2](https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/navigation/visual_banana_scores.png)
+
+
+## Future Work
+Rainbow paper (https://arxiv.org/pdf/1710.02298.pdf) suggests combining many of already known improvements to Q-Learning into one reinforcement learning algorithm.
+This approach is known as Rainbow algorithm, which was already implemented as part of another project released by Google, which is called Dopamine. 
+The next steps should include using this framework and Rainbow algorithm!
