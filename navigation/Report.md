@@ -46,11 +46,11 @@ During the project a couple of hyperparameter searches runs were tried. One of t
 Below is the chart of mean score over 100 last episodes for run with these parameters:
 
 
-![image1] https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/navigation/best_vector_banana.png "Best Vector Banana"
+![image1](https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/navigation/best_vector_banana.png)
 
 There is also a comparison between combinations of Q-Learning  extensions: 
 
 
-![image2] https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/navigation/algo_comparison_scores.png "Comparison"
+![image2](https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/navigation/algo_comparison_scores.png)
 
 
