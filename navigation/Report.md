@@ -113,6 +113,7 @@ ConvQNetwork(
 ## Hypeparameter optimisation
 
 During the project a couple of hyperparameter searches were tried. 
+The code for the searches is available in python files (test01.py - test05.py)
 One of the best hyperparameters constellations was the following one:
 `eps_start=0.2, eps_end=0.0001, eps_decay=0.99, lr=0.0008, buffer_size=100000, batch_size=64, gamma=0.99,
   tau=0.0075, update_rate=4, agent_type='DQN', layers=[32, 24], network_type='Simple'`
@@ -121,6 +122,15 @@ One of the best hyperparameters constellations was the following one:
 
 ### Vector Banana Environment
 
+The vector environment can be solved in 137 episodes: 
+```
+LearningTask(eps_start=0.2, eps_end=0.0001, eps_decay=0.99, lr=0.0008, buffer_size=100000, batch_size=64, gamma=0.99,
+ tau=0.0075, update_rate=4, agent_type='DQN', layers=[32, 24], network_type='Simple')
+Episode 100     Average Score: 8.273
+Episode 200     Average Score: 12.46
+Episode 237     Average Score: 13.00
+Environment solved in 137 episodes!     Average Score: 13.00
+```
 Below is the chart of mean score over 100 last episodes for run of Unity Banana Environment with vector state (using hyperparameters mentioned above):
 
 
@@ -136,7 +146,8 @@ It has shown, that for so small and easy vector state environment, it does not b
 
 ### Visual Banana Environment
 
-
+Visual environment was solved in 1400 episodes. 
+(Detailed history of scores duing the training is available in file navigation/visual_banana_nohup.out)
 Below is the chart of mean score over 100 last episodes for run of Unity Banana Environment with visual state :
 
 
