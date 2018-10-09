@@ -45,3 +45,6 @@ Run training for visual environment:
 Run trained vector agent: 
 
      python run_ind_test_vector_env.py
+     
+# Report
+[Report](https://github.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/blob/master/navigation/Report.md)
