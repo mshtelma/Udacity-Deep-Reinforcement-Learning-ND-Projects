@@ -35,10 +35,13 @@ Install all packages from requiremnets.txt
 ### Run instructions
 
 Run training for vector environment: 
+
     python train_vector_ind.py
 
 Run training for visual environment: 
+
     python train_pixels_ind.py
     
 Run trained vector agent: 
+
      python run_ind_test_vector_env.py
