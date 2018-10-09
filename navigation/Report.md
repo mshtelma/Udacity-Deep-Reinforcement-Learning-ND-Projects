@@ -47,6 +47,8 @@ One of the best hyperparameters constellations was the following one:
 
 ## Results
 
+### Vector Banana Environment
+
 Below is the chart of mean score over 100 last episodes for run of Unity Banana Environment with vector state (using hyperparameters mentioned above):
 
 
@@ -58,6 +60,9 @@ The comparison between different flavors of DQN algorithm was also conducted:
 
 It has shown, that for so small and easy vector state environment, it does not bring any real benefit to use Double DQN or Dueling networks, but these both technics played crucial role while training visual Banana environment. 
 
+
+
+### Visual Banana Environment
 
 
 Below is the chart of mean score over 100 last episodes for run of Unity Banana Environment with visual state :
