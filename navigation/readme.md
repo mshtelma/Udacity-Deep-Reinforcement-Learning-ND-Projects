@@ -14,9 +14,9 @@ The state space has 37 dimensions and contains the agent's velocity, along with 
 
 The task is episodic, and in order to solve the environment, your agent must get an average score of +13 over 100 consecutive episodes.
 
-### Getting started
+## Getting started
 
-## Download the environments
+### Download the environments
 This repository already includes environment  for Mac. Environments for other operating systems are available using the following links: 
   - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip)
   - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip)
@@ -24,15 +24,15 @@ This repository already includes environment  for Mac. Environments for other op
   - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
   
   
-## Install the Anaconda distribution of Python 3
+### Install the Anaconda distribution of Python 3
 Anaconda for Mac OS is available here: https://www.anaconda.com/download/#macos
 
-## Install the dependencies
+### Install the dependencies
 
 Install Unity ML-Agents (available here: https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Installation.md)
 Install all packages from requiremnets.txt
   
-### Run instructions
+## Run instructions
 
 Run training for vector environment: 
 
@@ -46,5 +46,5 @@ Run trained vector agent:
 
      python run_ind_test_vector_env.py
      
-# Report
+## Report
 [Report](https://github.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/blob/master/navigation/Report.md)
