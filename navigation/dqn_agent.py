@@ -51,6 +51,7 @@ class Agent():
         # Q-Network
         if network_type == 'Simple':
             self.qnetwork_local = QNetwork(state_size, action_size, seed, layers).to(device)
+
             self.qnetwork_target = QNetwork(state_size, action_size, seed, layers).to(device)
         elif network_type == 'Dueling':
             self.qnetwork_local = DuelingQNetwork(state_size, action_size, seed, layers).to(device)
@@ -59,7 +60,7 @@ class Agent():
             self.qnetwork_local = ConvQNetwork().to(device)
             self.qnetwork_target = ConvQNetwork().to(device)
         self.optimizer = optim.Adam(self.qnetwork_local.parameters(), lr=self.lr)
-
+        print(self.qnetwork_local)
         # Replay memory
         if memory is None:
             self.memory = ReplayBuffer(action_size, self.buffer_size, self.batch_size, seed)

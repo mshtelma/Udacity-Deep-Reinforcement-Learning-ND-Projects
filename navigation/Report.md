@@ -35,8 +35,80 @@ For vector observations I have used networks with different number of layers.
 One of the best was the network with the two hidden layers, 32 and 24 neurons. 
 It was possible to use smaller network with 24 and 6 neurons respectively, but the training time was longer for such network. 
 The basic DNN is implemented in class QNetwork. There is also abstract implementation, that reused among different versions of QNetworks.
+Here is the architecture of simple QNetwork:
+```
+QNetwork(
+  (seq): Sequential(
+    (l0): Linear(in_features=37, out_features=32, bias=True)
+    (r0): ReLU()
+    (l1): Linear(in_features=32, out_features=24, bias=True)
+    (r1): ReLU()
+    (ll): Linear(in_features=24, out_features=4, bias=True)
+  )
+)
+```
 Dueling Network algorithm is implemented in DuelingQNetwork. Both classes allow defining number of hidden layers and number of neurons in them. 
-For visual agent, convolutional version of QNetwork was implemented. This network has used dueling architecture. 
+Dueling QNetwork for vector environment has the following architecture:
+```
+DuelingQNetwork(
+  (seq): Sequential(
+    (l0): Linear(in_features=37, out_features=32, bias=True)
+    (r0): ReLU()
+    (l1): Linear(in_features=32, out_features=24, bias=True)
+    (r1): ReLU()
+    (ll): Linear(in_features=24, out_features=4, bias=True)
+  )
+  (adv1): Linear(in_features=4, out_features=8, bias=True)
+  (adv2): Linear(in_features=8, out_features=4, bias=True)
+  (val1): Linear(in_features=4, out_features=8, bias=True)
+  (val2): Linear(in_features=8, out_features=1, bias=True)
+)
+```
+For visual agent, convolutional version of QNetwork was implemented. 
+This network has used dueling architecture:
+```
+ConvQNetwork(
+  (conv_a1): Conv2d(12, 12, kernel_size=(4, 4), stride=(1, 1), padding=(2, 2))
+  (bn_a1): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv_a2): Conv2d(12, 24, kernel_size=(4, 4), stride=(1, 1), padding=(2, 2))
+  (bn_a2): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv_a3): Conv2d(24, 48, kernel_size=(4, 4), stride=(1, 1), padding=(2, 2))
+  (bn_a3): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv_a4): Conv2d(48, 96, kernel_size=(4, 4), stride=(1, 1), padding=(2, 2))
+  (bn_a4): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv_b1): Conv2d(12, 24, kernel_size=(3, 3), stride=(3, 3))
+  (bn_b1): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv_b2): Conv2d(24, 48, kernel_size=(3, 3), stride=(3, 3))
+  (bn_b2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv_b3): Conv2d(48, 96, kernel_size=(3, 3), stride=(3, 3))
+  (bn_b3): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv_b4): Conv2d(96, 24, kernel_size=(3, 3), stride=(1, 1))
+  (bn_b4): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv_c1): Conv2d(12, 24, kernel_size=(7, 2), stride=(2, 2))
+  (bn_c1): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv_c2): Conv2d(24, 48, kernel_size=(7, 2), stride=(2, 2))
+  (bn_c2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv_c3): Conv2d(48, 96, kernel_size=(7, 2), stride=(2, 2))
+  (bn_c3): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv_c4): Conv2d(96, 24, kernel_size=(4, 4), stride=(1, 1))
+  (bn_c4): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv_d1): Conv2d(12, 24, kernel_size=(2, 7), stride=(2, 2))
+  (bn_d1): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv_d2): Conv2d(24, 48, kernel_size=(2, 7), stride=(2, 2))
+  (bn_d2): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv_d3): Conv2d(48, 96, kernel_size=(2, 7), stride=(2, 2))
+  (bn_d3): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (conv_d4): Conv2d(96, 24, kernel_size=(4, 4), stride=(1, 1))
+  (bn_d4): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (head1): Linear(in_features=1896, out_features=1024, bias=True)
+  (head2): Linear(in_features=1024, out_features=24, bias=True)
+  (adv1): Linear(in_features=24, out_features=12, bias=True)
+  (adv2): Linear(in_features=12, out_features=4, bias=True)
+  (val1): Linear(in_features=24, out_features=12, bias=True)
+  (val2): Linear(in_features=12, out_features=1, bias=True)
+)
+```
+
 
 ## Hypeparameter optimisation
 
