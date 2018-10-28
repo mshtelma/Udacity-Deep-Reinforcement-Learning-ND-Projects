@@ -19,8 +19,17 @@ state_size = env_info.vector_observations.shape[1]
 state = env_info.vector_observations
 score = np.zeros(num_agents)
 
-agent = Agent(state_size=state_size, action_size=action_size, num_agents=num_agents, random_seed=2)
+BUFFER_SIZE = int(1e5)  # replay buffer size
+BATCH_SIZE = 128  # minibatch size
+GAMMA = 0.99  # discount factor
+TAU = 1e-3  # for soft update of target parameters
+LR_ACTOR = 1e-3  # learning rate of the actor
+LR_CRITIC = 1e-3  # learning rate of the critic
 
+agent = Agent(state_size=state_size, action_size=action_size, num_agents=num_agents,
+              buffer_size=BUFFER_SIZE, batch_size=BATCH_SIZE, gamma=GAMMA, tau=TAU, lr_actor=LR_ACTOR,
+              lr_critic=LR_CRITIC,
+              random_seed=0)
 agent.actor_local.load_state_dict(torch.load('reacher_checkpoint_actor_final.pth'))
 agent.critic_local.load_state_dict(torch.load('reacher_checkpoint_critic_final.pth'))
 
