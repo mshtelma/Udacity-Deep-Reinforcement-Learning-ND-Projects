@@ -1,4 +1,4 @@
-# Project 1: Navigation - Unity Banana Environment
+# Project 1: Navigation - Unity Banana Collector Environment
 
 ## Overview
 
