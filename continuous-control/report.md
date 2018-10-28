@@ -81,3 +81,7 @@ Below is the chart of score and mean score over 100 last episodes for run of Uni
 
 
 ## Future Work
+Normilized Advantaged Functions (https://arxiv.org/abs/1603.00748) algorithm is an improvement to Q-Learning, which 
+allows applying experience replay to continuous tasks. It substantially improves performance on a set of robotic simulated tasks. 
+This algorithm is considered to perform better then DDPG on most of tested tasks. 
+I think using algorithm can bring significant improvements to solving Reacher environment. 
