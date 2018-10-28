@@ -9,6 +9,8 @@
 ## Environment
 
 During this project the [Reacher](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#reacher) environment was solved 
+
+
 ![Trained Agent][image1]
 
 In this environment, a double-jointed arm can move to target locations. 
@@ -58,3 +60,4 @@ Run trained vector agent:
      python run_reacher.py
      
 ## Report
+[Report](https://github.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/blob/master/continuous-control/report.md)

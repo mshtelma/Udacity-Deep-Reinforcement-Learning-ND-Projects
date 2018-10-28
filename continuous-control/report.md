@@ -42,10 +42,18 @@ DDPG agent provided by Udacity was adapted for working with Unity environment wi
 Both actor and critic were implemented using deep neural networks. 
 Actor network has four fully-connected layers with 33, 128, 48 and 24 neurons respectively. 
 The architecture of actor network is depicted on the figure below:
+
+
 ![image2](https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/continuous-control/actor.svg)
+
+
 Critic network has three fully-connected layers with 33 + 4, 128 and 64 neurons respectively. 
 The architecture of critic network is depicted on the figure below:
+
+
 ![image3](https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/continuous-control/critic.svg)
+
+
 These changes in model architecture produced superior performance compared to Udacity's baseline attempt.
 
 ## Hypeparameter
