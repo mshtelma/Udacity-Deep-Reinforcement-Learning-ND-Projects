@@ -76,7 +76,7 @@ The Reacher Environment was solved in 107 episodes using DDPG algorithm and hype
 Below is the chart of score and mean score over 100 last episodes for run of Unity Reacher Environment:
 
 
-![image1](https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/navigation/scores.png)
+![image1](https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/continuous-control/scores.png)
 
 
 
