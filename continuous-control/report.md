@@ -44,14 +44,14 @@ Actor network has four fully-connected layers with 33, 128, 48 and 24 neurons re
 The architecture of actor network is depicted on the figure below:
 
 
-![image2](https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/continuous-control/actor.svg)
+![image2](https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/continuous-control/actor.png)
 
 
 Critic network has three fully-connected layers with 33 + 4, 128 and 64 neurons respectively. 
 The architecture of critic network is depicted on the figure below:
 
 
-![image3](https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/continuous-control/critic.svg)
+![image3](https://raw.githubusercontent.com/mshtelma/Udacity-Deep-Reinforcement-Learning-ND-Projects/master/continuous-control/critic.png)
 
 
 These changes in model architecture produced superior performance compared to Udacity's baseline attempt.
