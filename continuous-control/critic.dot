@@ -1,0 +1,54 @@
+digraph {
+	graph [size="12,12"]
+	node [align=left fontsize=12 height=0.2 ranksep=0.1 shape=box style=filled]
+	"Critic/8" [label="Critic
+8"]
+	"input/0" -> "Critic/8"
+	"Critic/1" -> "Critic/8"
+	"Critic/Linear[fc1]/9" [label="Critic
+Linear[fc1]
+9"]
+	"Critic/8" -> "Critic/Linear[fc1]/9"
+	"Critic/Linear[fc1]/2" -> "Critic/Linear[fc1]/9"
+	"Critic/Linear[fc1]/3" -> "Critic/Linear[fc1]/9"
+	"Critic/10" [label="Critic
+10"]
+	"Critic/Linear[fc1]/9" -> "Critic/10"
+	"Critic/Linear[fc2]/11" [label="Critic
+Linear[fc2]
+11"]
+	"Critic/10" -> "Critic/Linear[fc2]/11"
+	"Critic/Linear[fc2]/4" -> "Critic/Linear[fc2]/11"
+	"Critic/Linear[fc2]/5" -> "Critic/Linear[fc2]/11"
+	"Critic/12" [label="Critic
+12"]
+	"Critic/Linear[fc2]/11" -> "Critic/12"
+	"Critic/Linear[fc3]/13" [label="Critic
+Linear[fc3]
+13"]
+	"Critic/12" -> "Critic/Linear[fc3]/13"
+	"Critic/Linear[fc3]/6" -> "Critic/Linear[fc3]/13"
+	"Critic/Linear[fc3]/7" -> "Critic/Linear[fc3]/13"
+	"input/0" [label="input
+0"]
+	"Critic/1" [label="Critic
+1"]
+	"Critic/Linear[fc1]/2" [label="Critic
+Linear[fc1]
+2"]
+	"Critic/Linear[fc1]/3" [label="Critic
+Linear[fc1]
+3"]
+	"Critic/Linear[fc2]/4" [label="Critic
+Linear[fc2]
+4"]
+	"Critic/Linear[fc2]/5" [label="Critic
+Linear[fc2]
+5"]
+	"Critic/Linear[fc3]/6" [label="Critic
+Linear[fc3]
+6"]
+	"Critic/Linear[fc3]/7" [label="Critic
+Linear[fc3]
+7"]
+}

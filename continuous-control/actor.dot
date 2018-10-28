@@ -1,0 +1,66 @@
+digraph {
+	graph [size="12,12"]
+	node [align=left fontsize=12 height=0.2 ranksep=0.1 shape=box style=filled]
+	"Actor/Linear[fc1]/9" [label="Actor
+Linear[fc1]
+9"]
+	"input/0" -> "Actor/Linear[fc1]/9"
+	"Actor/Linear[fc1]/1" -> "Actor/Linear[fc1]/9"
+	"Actor/Linear[fc1]/2" -> "Actor/Linear[fc1]/9"
+	"Actor/10" [label="Actor
+10"]
+	"Actor/Linear[fc1]/9" -> "Actor/10"
+	"Actor/Linear[fc2]/11" [label="Actor
+Linear[fc2]
+11"]
+	"Actor/10" -> "Actor/Linear[fc2]/11"
+	"Actor/Linear[fc2]/3" -> "Actor/Linear[fc2]/11"
+	"Actor/Linear[fc2]/4" -> "Actor/Linear[fc2]/11"
+	"Actor/12" [label="Actor
+12"]
+	"Actor/Linear[fc2]/11" -> "Actor/12"
+	"Actor/Linear[fc3]/13" [label="Actor
+Linear[fc3]
+13"]
+	"Actor/12" -> "Actor/Linear[fc3]/13"
+	"Actor/Linear[fc3]/5" -> "Actor/Linear[fc3]/13"
+	"Actor/Linear[fc3]/6" -> "Actor/Linear[fc3]/13"
+	"Actor/14" [label="Actor
+14"]
+	"Actor/Linear[fc3]/13" -> "Actor/14"
+	"Actor/Linear[fc4]/15" [label="Actor
+Linear[fc4]
+15"]
+	"Actor/14" -> "Actor/Linear[fc4]/15"
+	"Actor/Linear[fc4]/7" -> "Actor/Linear[fc4]/15"
+	"Actor/Linear[fc4]/8" -> "Actor/Linear[fc4]/15"
+	"Actor/16" [label="Actor
+16"]
+	"Actor/Linear[fc4]/15" -> "Actor/16"
+	"input/0" [label="input
+0"]
+	"Actor/Linear[fc1]/1" [label="Actor
+Linear[fc1]
+1"]
+	"Actor/Linear[fc1]/2" [label="Actor
+Linear[fc1]
+2"]
+	"Actor/Linear[fc2]/3" [label="Actor
+Linear[fc2]
+3"]
+	"Actor/Linear[fc2]/4" [label="Actor
+Linear[fc2]
+4"]
+	"Actor/Linear[fc3]/5" [label="Actor
+Linear[fc3]
+5"]
+	"Actor/Linear[fc3]/6" [label="Actor
+Linear[fc3]
+6"]
+	"Actor/Linear[fc4]/7" [label="Actor
+Linear[fc4]
+7"]
+	"Actor/Linear[fc4]/8" [label="Actor
+Linear[fc4]
+8"]
+}
