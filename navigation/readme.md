@@ -2,7 +2,7 @@
 
 [image1]: https://user-images.githubusercontent.com/10624937/42135619-d90f2f28-7d12-11e8-8823-82b970a54d7e.gif "Trained Agent"
 
-During this project I have trained an agent to navigate though two types of bananas in square world, collects yellow bananas and omits the purple ones.  
+During this project I have trained an agent to navigate though two types of bananas in square world, collect yellow bananas and omit the purple ones.  
 
 A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana.  Thus, the goal of your agent is to collect as many yellow bananas as possible while avoiding blue bananas.  
 
