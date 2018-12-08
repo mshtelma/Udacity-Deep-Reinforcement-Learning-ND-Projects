@@ -1,0 +1,112 @@
+/Users/mshtelma/anaconda/envs/deeprl/bin/python3.6 /Users/mshtelma/Documents/work/courses/DRLND/Udacity-Deep-Reinforcement-Learning-ND-Projects/collaboration-competition-ppo/train-ppo.py
+Mono path[0] = '/Users/mshtelma/Documents/work/courses/DRLND/Udacity-Deep-Reinforcement-Learning-ND-Projects/collaboration-competition-ppo/Environments/Tennis.app/Contents/Resources/Data/Managed'
+Mono config path = '/Users/mshtelma/Documents/work/courses/DRLND/Udacity-Deep-Reinforcement-Learning-ND-Projects/collaboration-competition-ppo/Environments/Tennis.app/Contents/MonoBleedingEdge/etc'
+INFO:unityagents:
+'Academy' started successfully!
+Unity Academy name: Academy
+        Number of Brains: 1
+        Number of External Brains : 1
+        Lesson number : 0
+        Reset Parameters :
+
+Unity brain name: TennisBrain
+        Number of Visual Observations (per agent): 0
+        Vector Observation space type: continuous
+        Vector Observation space size (per agent): 8
+        Number of stacked Vector Observation: 3
+        Vector Action space type: continuous
+        Vector Action space size (per agent): 2
+        Vector Action descriptions: ,
+Number of agents: 2
+Size of each action: 2
+/Users/mshtelma/anaconda/envs/deeprl/lib/python3.6/site-packages/torch/nn/functional.py:995: UserWarning: nn.functional.tanh is deprecated. Use torch.tanh instead.
+  warnings.warn("nn.functional.tanh is deprecated. Use torch.tanh instead.")
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+         DummyBody-1                [-1, 1, 48]               0
+            Linear-2                [-1, 1, 32]           1,568
+            Linear-3                [-1, 1, 32]           1,056
+            FCBody-4                [-1, 1, 32]               0
+            Linear-5                [-1, 1, 32]           1,568
+            Linear-6                [-1, 1, 32]           1,056
+            FCBody-7                [-1, 1, 32]               0
+            Linear-8                 [-1, 1, 4]             132
+            Linear-9                 [-1, 1, 1]              33
+================================================================
+Total params: 5,413
+Trainable params: 5,413
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.00
+Params size (MB): 0.02
+Estimated Total Size (MB): 0.02
+----------------------------------------------------------------
+Episode: 223,  mean reward: 0.0100
+Episode: 452,  mean reward: 0.0120
+Episode: 677,  mean reward: 0.0109
+Episode: 889,  mean reward: 0.0250
+Episode: 1100,  mean reward: 0.0180
+Episode: 1292,  mean reward: 0.0320
+Episode: 1469,  mean reward: 0.0330
+Episode: 1643,  mean reward: 0.0350
+Episode: 1820,  mean reward: 0.0390
+Episode: 1997,  mean reward: 0.0380
+Episode: 2149,  mean reward: 0.0590
+Episode: 2293,  mean reward: 0.0690
+Episode: 2453,  mean reward: 0.0500
+Episode: 2588,  mean reward: 0.0720
+Episode: 2714,  mean reward: 0.0940
+Episode: 2842,  mean reward: 0.0830
+Episode: 2944,  mean reward: 0.1260
+Episode: 3052,  mean reward: 0.1090
+Episode: 3167,  mean reward: 0.1100
+Episode: 3262,  mean reward: 0.1419
+Episode: 3359,  mean reward: 0.1360
+Episode: 3442,  mean reward: 0.1759
+Episode: 3541,  mean reward: 0.1410
+Episode: 3646,  mean reward: 0.1280
+Episode: 3743,  mean reward: 0.1330
+Episode: 3829,  mean reward: 0.1510
+Episode: 3904,  mean reward: 0.1950
+Episode: 3977,  mean reward: 0.2180
+Episode: 4044,  mean reward: 0.2340
+Episode: 4121,  mean reward: 0.2079
+Episode: 4199,  mean reward: 0.1990
+Episode: 4263,  mean reward: 0.2380
+Episode: 4338,  mean reward: 0.2250
+Episode: 4407,  mean reward: 0.2190
+Episode: 4467,  mean reward: 0.2630
+Episode: 4514,  mean reward: 0.3120
+Episode: 4560,  mean reward: 0.3799
+Episode: 4601,  mean reward: 0.3897
+Episode: 4640,  mean reward: 0.4298
+Episode: 4678,  mean reward: 0.4849
+Episode: 4756,  mean reward: 0.2470
+Episode: 4817,  mean reward: 0.2468
+Episode: 4857,  mean reward: 0.3428
+Episode: 4891,  mean reward: 0.4230
+Episode: 4924,  mean reward: 0.5191
+Episode: 4953,  mean reward: 0.5750
+Episode: 4987,  mean reward: 0.5729
+Episode: 5020,  mean reward: 0.6209
+Episode: 5040,  mean reward: 0.6769
+Episode: 5073,  mean reward: 0.6219
+Episode: 5086,  mean reward: 0.7629
+Episode: 5117,  mean reward: 0.8109
+Episode: 5141,  mean reward: 0.7529
+Episode: 5158,  mean reward: 0.8431
+Episode: 5180,  mean reward: 0.9342
+Episode: 5206,  mean reward: 0.8452
+Episode: 5239,  mean reward: 0.8262
+Episode: 5261,  mean reward: 0.7119
+Episode: 5272,  mean reward: 0.8671
+Episode: 5305,  mean reward: 0.8211
+Episode: 5326,  mean reward: 0.8451
+Episode: 5344,  mean reward: 0.9403
+Episode: 5372,  mean reward: 0.7691
+Episode: 5387,  mean reward: 0.9182
+Episode: 5404,  mean reward: 0.9912
+Episode: 5426,  mean reward: 1.0182
+Environment solved in 5426 episodes
