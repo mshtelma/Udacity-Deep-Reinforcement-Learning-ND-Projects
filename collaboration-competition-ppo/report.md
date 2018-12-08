@@ -40,6 +40,9 @@ It is also possible to configure various optimisation hyperparameters.
 ## Model
 
 The following model was used : 
+
+
+
     ----------------------------------------------------------------
             Layer (type)               Output Shape         Param #
     ================================================================
